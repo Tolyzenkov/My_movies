@@ -2,6 +2,8 @@ package com.tolyzenkov.mymovies.utils;
 
 import android.util.Log;
 
+import androidx.annotation.StringDef;
+
 import com.tolyzenkov.mymovies.data.Movie;
 
 import org.json.JSONArray;
@@ -39,6 +41,7 @@ public class JSONUtils {
                 double rating = objectMovie.getInt(KEY_RATING);
                 int year = objectMovie.getInt(KEY_YEAR);
                 String description = getDescription(id);
+//                String description = "425535353563";
                 Movie movie = new Movie(id, title, originalTitle, description, poster, previewPoster, rating, year);
                 result.add(movie);
             }

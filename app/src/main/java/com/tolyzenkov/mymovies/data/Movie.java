@@ -1,44 +1,72 @@
 package com.tolyzenkov.mymovies.data;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "movies")
 public class Movie {
+    @PrimaryKey(autoGenerate = true)
+    private int uniqueId;
     private int id;
-    private String nameRu;
-    private String nameEn;
+    private String title;
+    private String originalTitle;
     private String description;
-    private String posterUrl;
+    private String poster;
     private String previewPoster;
     private double rating;
     private int year;
 
-    public Movie(int id, String title, String originalTitle, String description, String poster, String previewPoster, double rating, int releaseDate) {
+    public Movie(int uniqueId, int id, String title, String originalTitle, String description, String poster, String previewPoster, double rating, int year) {
+        this.uniqueId = uniqueId;
         this.id = id;
-        this.nameRu = title;
-        this.nameEn = originalTitle;
+        this.title = title;
+        this.originalTitle = originalTitle;
         this.description = description;
-        this.posterUrl = poster;
+        this.poster = poster;
         this.previewPoster = previewPoster;
         this.rating = rating;
-        this.year = releaseDate;
+        this.year = year;
+    }
+
+    @Ignore
+    public Movie(int id, String title, String originalTitle, String description, String poster, String previewPoster, double rating, int year) {
+        this.id = id;
+        this.title = title;
+        this.originalTitle = originalTitle;
+        this.description = description;
+        this.poster = poster;
+        this.previewPoster = previewPoster;
+        this.rating = rating;
+        this.year = year;
+    }
+
+    public int getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(int uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setNameRu(String nameRu) {
-        this.nameRu = nameRu;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setNameEn(String nameEn) {
-        this.nameEn = nameEn;
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public void setRating(double rating) {
@@ -53,20 +81,20 @@ public class Movie {
         return id;
     }
 
-    public String getNameRu() {
-        return nameRu;
+    public String getTitle() {
+        return title;
     }
 
-    public String getNameEn() {
-        return nameEn;
+    public String getOriginalTitle() {
+        return originalTitle;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getPosterUrl() {
-        return posterUrl;
+    public String getPoster() {
+        return poster;
     }
 
     public double getRating() {
